@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <aside th:fragment="side-menu">
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="profile.html"><img src="../images/admin.jpg" class="img-circle" width="80"></a></p>
+          <h5 class="centered">UserX</h5>
+          <li class="mt">
+            <a class="active" href="index.html">
+              <i class="fa fa-dashboard"></i>
+              <span>Trang chủ</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Kho Hàng</span>
+              </a>
+            <ul class="sub">
+              <li><a href="general.html">Nhập hàng</a></li>
+              <li><a href="buttons.html">Xem Kho</a></li>
+              <li><a href="panels.html">Thêm Mới Hàng Hóa</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Nhân Viên</span>
+              </a>
+            <ul class="sub">
+              <li><a href="grids.html">Thông tin</a></li>
+              <li><a href="calendar.html">Lương Thưởng</a></li>
+              <li><a href="gallery.html">Đánh Giá</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Hóa Đơn</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Xem Hóa Đơn</a></li>
+              <li><a href="login.html">Sửa Hóa Đơn</a></li>
+               <li><a href="login.html">Đã Xuất</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Công Nợ</span>
+              </a>
+            <ul class="sub">
+              <li><a href="form_component.html">Cần Thu</a></li>
+              <li><a href="advanced_form_components.html">Phải Trả</a></li>
+              <li><a href="form_validation.html">Lịch Sử</a></li>
+            </ul>
+          </li>  
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Khu Vực</span>
+              </a>
+            <ul class="sub">
+              <li><a href="grids.html">- Thêm Mới</a></li>
+              <li><a href="calendar.html">- Xóa</a></li>
+              <li><a href="gallery.html"></a></li>
+            </ul>
+          </li> 
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+</body>
+</html>
