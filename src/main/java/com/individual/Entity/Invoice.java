@@ -1,6 +1,7 @@
 package com.individual.Entity;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,9 +20,14 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "invoice",uniqueConstraints = { //
 		@UniqueConstraint(name = "invoice_UK", columnNames = { "customer_id", "staff_id" }) })
-public class Invoice {
+public class Invoice implements Serializable{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue
     @Column(name = "invoice_id", nullable = false)
     private Long invoiceId;

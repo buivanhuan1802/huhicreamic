@@ -1,5 +1,5 @@
 package com.individual.Service;
 
-public class CustomerService {
+public interface CustomerService {
 
 }

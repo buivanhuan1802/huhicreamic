@@ -1,5 +1,6 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,12 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "invoice_detail")
-public class InvoiceDetail {
+public class InvoiceDetail implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "detail_invoice_id")
@@ -25,7 +32,7 @@ public class InvoiceDetail {
     @JoinColumn(name = "invoice_id", nullable = false)
 	private Invoice invoice;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_detail_id", nullable = false)
 	private ProductDetail productDetail;
 	

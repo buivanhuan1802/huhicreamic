@@ -1,5 +1,6 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,8 +15,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable{
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "product_id")
@@ -35,8 +41,28 @@ public class Product {
 	@Column(name = "disable")
 	private boolean disable;
     
-	@OneToMany(fetch = FetchType.EAGER,mappedBy = "product")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
+	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
+	private List<ProductImage> listImage;
+	
+	public List<ProductDetail> getListProductDetail() {
+		return listProductDetail;
+	}
+
+	public void setListProductDetail(List<ProductDetail> listProductDetail) {
+		this.listProductDetail = listProductDetail;
+	}
+
+	public List<ProductImage> getListImage() {
+		return listImage;
+	}
+
+	public void setListImage(List<ProductImage> listImage) {
+		this.listImage = listImage;
+	}
+
 	public Long getId() {
 		return id;
 	}

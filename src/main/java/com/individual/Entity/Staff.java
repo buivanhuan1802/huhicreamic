@@ -1,5 +1,6 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +15,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="staff")
-public class Staff {
+public class Staff implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	@Id
 	@GeneratedValue

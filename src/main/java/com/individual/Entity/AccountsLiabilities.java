@@ -34,7 +34,7 @@ public class AccountsLiabilities implements Serializable{
 	@Column(name = "total_amount",nullable = false)
 	private double totalAmount;
 
-	@OneToMany(mappedBy="accountLiabilities")
+	@OneToMany(mappedBy="accountLiabilities",fetch = FetchType.LAZY)
 	private List<AccountsLiabilitiesDetail> listAccountsLiabilitiesDetail;
 	
 	public int getAccountsLiabilitiesId() {

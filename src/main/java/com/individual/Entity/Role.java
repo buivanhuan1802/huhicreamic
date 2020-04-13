@@ -1,5 +1,7 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +14,14 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "app_role", //
         uniqueConstraints = { //
                 @UniqueConstraint(name = "APP_ROLE_UK", columnNames = "Role_Name") })
-public class Role {
+public class Role implements Serializable{
 	     
-	    @Id
+	    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+		@Id
 	    @GeneratedValue
 	    @Column(name = "role_id", nullable = false)
 	    private Long roleId;

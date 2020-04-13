@@ -1,5 +1,7 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,8 +14,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "debt_receivables_detail")
-public class DebtReceivablesDetail {
+public class DebtReceivablesDetail implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "detail_id")
