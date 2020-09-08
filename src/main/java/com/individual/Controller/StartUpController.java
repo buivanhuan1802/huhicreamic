@@ -1,5 +1,6 @@
 package com.individual.Controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,13 @@ import com.individual.ServiceImpl.UserRoleServiceImpl;
 import com.individual.Utils.CommonConstant;
 
 @Controller
-public class CommonController {
+public class StartUpController {
 
 	@Autowired
 	AppUserServiceImpl appUser;
 	@Autowired
 	AppRoleServiceImpl appRole;
+
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String Login(@RequestParam(name = "error", required = false) String error, Model model) {

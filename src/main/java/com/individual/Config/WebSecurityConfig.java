@@ -1,7 +1,5 @@
 package com.individual.Config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.individual.ServiceImpl.UserDetailsServiceImpl;
 
@@ -25,8 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 
-	//@Autowired
-	//private DataSource dataSource;
+	// @Autowired
+	// private DataSource dataSource;
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -69,19 +65,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/j_spring_security_check") // Submit URL
 				.loginPage("/login").successHandler(AuthenticationSuccessHandler()).failureUrl("/login?error=true");
 		// logout config
-	//	http.logout().logoutSuccessUrl("/login").logoutUrl("/logout").permitAll();
+		// http.logout().logoutSuccessUrl("/login").logoutUrl("/logout").permitAll();
 		// Cấu hình Remember Me.
-	//	http.authorizeRequests().and() //
-		//		.rememberMe().tokenRepository(this.persistentTokenRepository()) //
-		//		.tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
+		// http.authorizeRequests().and() //
+		// .rememberMe().tokenRepository(this.persistentTokenRepository()) //
+		// .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
 
 	}
 
-	//@Bean
+	// @Bean
 //	public PersistentTokenRepository persistentTokenRepository() {
-	//	JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
-	//	db.setDataSource(dataSource);
-	//	return db;
-	//}
+	// JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
+	// db.setDataSource(dataSource);
+	// return db;
+	// }
 
 }
