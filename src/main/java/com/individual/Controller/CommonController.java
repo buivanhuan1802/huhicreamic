@@ -69,12 +69,12 @@ public class CommonController {
 		AppUser user = appUser.findUserAccount(a.getName());
 		List<String> roles = userRole.getUserRoles(user.getUserId());
 		if (context.equals("/user")) {
-			if(!roles.contains(CommonConstant.ROLE_USER)) {
+			if (!roles.contains(CommonConstant.ROLE_USER)) {
 				return "redirect:/403";
 			}
 			return userUrl;
 		} else if (context.equals("/admin")) {
-			if(!roles.contains(CommonConstant.ROLE_ADMIN)) {
+			if (!roles.contains(CommonConstant.ROLE_ADMIN)) {
 				return "redirect:/403";
 			}
 			return adminUrl;
