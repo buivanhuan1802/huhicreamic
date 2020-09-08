@@ -1,6 +1,7 @@
 package com.individual.Controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -16,16 +17,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.individual.Entity.AppUser;
+import com.individual.Entity.UserRole;
+import com.individual.ServiceImpl.AppRoleServiceImpl;
 import com.individual.ServiceImpl.AppUserServiceImpl;
 import com.individual.ServiceImpl.UserRoleServiceImpl;
 import com.individual.Utils.CommonConstant;
 
 @Controller
 public class CommonController {
+
 	@Autowired
 	AppUserServiceImpl appUser;
 	@Autowired
-	UserRoleServiceImpl userRole;
+	AppRoleServiceImpl appRole;
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String Login(@RequestParam(name = "error", required = false) String error, Model model) {
@@ -47,7 +51,6 @@ public class CommonController {
 		for (Cookie cookie : request.getCookies()) {
 			cookie.setMaxAge(0);
 		}
-
 		return "redirect:/login";
 	}
 
@@ -63,27 +66,13 @@ public class CommonController {
 		String userUrl = "redirect:/user/dashboard";
 		HttpSession ss = req.getSession(false);
 		if (ss == null) {
-			return "login";
+			return "redirect:/login";
 		}
-		String context = req.getContextPath().toString();
 		AppUser user = appUser.findUserAccount(a.getName());
-		List<String> roles = userRole.getUserRoles(user.getUserId());
-		if (context.equals("/user")) {
-			if(!roles.contains(CommonConstant.ROLE_USER)) {
-				return "redirect:/403";
-			}
-			return userUrl;
-		} else if (context.equals("/admin")) {
-			if(!roles.contains(CommonConstant.ROLE_ADMIN)) {
-				return "redirect:/403";
-			}
+		List<String> roleName = appRole.getRoleNames(user.getUserId());
+		if (roleName.contains(CommonConstant.ROLE_ADMIN)) {
 			return adminUrl;
-		} else {
-			if (roles.contains(CommonConstant.ROLE_ADMIN)) {
-				return adminUrl;
-			} else {
-				return userUrl;
-			}
 		}
+		return userUrl;
 	}
 }

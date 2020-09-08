@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -13,7 +14,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "app_role", //
         uniqueConstraints = { //
-                @UniqueConstraint(name = "APP_ROLE_UK", columnNames = "Role_Name") })
+                @UniqueConstraint(name = "APP_ROLE_UK", columnNames = "role_name") })
 public class Role implements Serializable{
 	     
 	    /**
@@ -22,7 +23,7 @@ public class Role implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 		@Id
-	    @GeneratedValue
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "role_id", nullable = false)
 	    private Long roleId;
 	 

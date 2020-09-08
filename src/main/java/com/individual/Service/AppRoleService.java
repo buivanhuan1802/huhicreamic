@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface AppRoleService {
 
-	public List<String> getRoleNames(Long userId);
+	List<String> getRoleNames(Long userId);
 
 }

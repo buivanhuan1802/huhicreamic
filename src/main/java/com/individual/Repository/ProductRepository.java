@@ -1,13 +1,11 @@
 package com.individual.Repository;
 
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-import com.individual.Entity.Product;
 
+
+@Repository
 public interface ProductRepository {
 	
-	public List<Product> getAllProduct();
-
-	public List<Product> getProductBySupplier(int id);
 
 }

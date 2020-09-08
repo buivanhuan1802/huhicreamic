@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -24,12 +25,12 @@ public class Staff implements Serializable {
 
 
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="staff_id")
-	private Long id;
+	private int id;
 	
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id",nullable = false)
 	private AppUser user;
 	
@@ -48,6 +49,9 @@ public class Staff implements Serializable {
 	@Column(name="disable")
 	private boolean disable;
 
+	@Column(name = "fixed_salary")
+	private double fixedSalay; 
+	
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "staff")
 	private List<DayOff> listDayOff;
 	
@@ -71,11 +75,11 @@ public class Staff implements Serializable {
 		this.shipper = shipper;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -125,5 +129,13 @@ public class Staff implements Serializable {
 
 	public void setDisable(boolean disable) {
 		this.disable = disable;
+	}
+
+	public double getFixedSalay() {
+		return fixedSalay;
+	}
+
+	public void setFixedSalay(double fixedSalay) {
+		this.fixedSalay = fixedSalay;
 	}
 }

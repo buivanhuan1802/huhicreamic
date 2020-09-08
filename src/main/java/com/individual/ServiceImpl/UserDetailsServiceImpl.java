@@ -23,7 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
  
     @Autowired
     private AppRoleServiceImpl appRole;
- 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         AppUser appUser = this.appUser.findUserAccount(userName);
@@ -37,7 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
  
         // [ROLE_USER, ROLE_ADMIN,..]
         List<String> roleNames = this.appRole.getRoleNames(appUser.getUserId());
- 
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         if (roleNames != null) {
             for (String role : roleNames) {

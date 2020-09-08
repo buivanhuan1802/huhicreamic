@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,10 +14,10 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "User_Role", //
+@Table(name = "user_role", //
 		uniqueConstraints = { //
-				@UniqueConstraint(name = "USER_ROLE_UK", columnNames = { "User_Id", "Role_Id" }) })
-public class UserRole implements Serializable{
+				@UniqueConstraint(name = "user_role_UK", columnNames = { "user_id", "role_id" }) })
+public class UserRole implements Serializable {
 
 	/**
 	 * 
@@ -24,17 +25,27 @@ public class UserRole implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "Id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "User_Id", nullable = false)
+	@JoinColumn(name = "user_Id", nullable = false)
 	private AppUser appUser;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Role_Id", nullable = false)
+	@JoinColumn(name = "role_Id", nullable = false)
 	private Role appRole;
+
+	public UserRole() {
+	}
+
+	public UserRole(Long id, AppUser appUser, Role appRole) {
+		super();
+		this.id = id;
+		this.appUser = appUser;
+		this.appRole = appRole;
+	}
 
 	public Long getId() {
 		return id;
