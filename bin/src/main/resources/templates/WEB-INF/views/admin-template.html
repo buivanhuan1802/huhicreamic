@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+ 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+   <aside th:fragment="side-menu">
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="profile.html"><img src="../images/admin.jpg" class="img-circle" width="80"></a></p>
+          <h5 class="centered">Adminstrator</h5>
+          <li class="mt">
+            <a class="active" href="index.html">
+              <i class="fa fa-dashboard"></i>
+              <span>Trang chủ</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Kho Hàng</span>
+              </a>
+            <ul class="sub">
+              <li><a th:href="@{/admin/warehouser-view}">Xem</a></li>
+              <li><a th:href="@{/admin/warehouser-goodsreceiptreport}">Lịch Sử Nhập Hàng</a></li>
+              <li><a th:href="@{/admin/warehouser-inventoryreport}">Báo Cáo Tồn Kho</a></li>
+            </ul>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Nhân Viên</span>
+              </a>
+            <ul class="sub">
+             <li><a th:href="@{/admin/staff-createnew}">Tạo Mới</a></li>
+              <li><a th:href="@{/admin/staff-viewall}">Xem</a></li>
+              <li><a th:href="@{/admin/staff-salaryreport}">Báo Cáo Lương</a></li>
+              <li><a th:href="@{/admin/staff-evaluation}">Đánh Giá</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Hóa Đơn</span>
+              </a>
+            <ul class="sub">
+              <li><a th:href="@{/admin/invoice-view?status=1}">Chờ Xử Lý</a></li>
+               <li><a th:href="@{/admin/invoice-view?status=3}">Đã Xuất</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Công Nợ</span>
+              </a>
+            <ul class="sub">
+              <li><a th:href="@{/admin/debt-receivables}">Cần Thu</a></li>
+              <li><a th:href="@{/admin/debt-liabilities}">Phải Trả</a></li>
+              <li><a th:href="@{/admin/debt-report}">Lịch Sử</a></li>
+            </ul>
+          </li>  
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-plus"></i>
+              <span>Khu Vực</span>
+              </a>
+            <ul class="sub">
+              <li><a th:href="@{/admin/area-createnew}">Thêm Mới</a></li>
+              <li><a th:href="@{/admin/area-view}">Xem</a></li>
+            </ul>
+          </li> 
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+
+</body>
+</html>

@@ -11,22 +11,20 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "User_Role", //
-		uniqueConstraints = { //
-				@UniqueConstraint(name = "USER_ROLE_UK", columnNames = { "User_Id", "Role_Id" }) })
+@Table(name = "user_role")
 public class UserRole {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "Id", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "User_Id", nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private AppUser appUser;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Role_Id", nullable = false)
+	@JoinColumn(name = "role_id", nullable = false)
 	private Role appRole;
 
 	public Long getId() {

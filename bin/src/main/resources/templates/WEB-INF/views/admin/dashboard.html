@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<th:block th:insert="~{/common-template :: link}"></th:block>
+<th:block th:insert="~{/common-template :: head/script}"></th:block>
+<title>DashBoard</title>
+</head>
+<body>
+<section>
+<th:block th:insert="~{/common-template :: header-fragment}"></th:block>
+   <th:block th:insert="~{/admin-template :: side-menu}"></th:block>
+     <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+          <div class="col-lg-9 main-chart">
+            <!--CUSTOM CHART START -->
+            <div class="border-head">
+              <h3>Bảng Thống Kê Năm 2020 (<span style="color:red">ĐV:Trăm triệu/Tháng</span>)
+              <label style="margin-left: 10%;width: 30%"><span style="font-size:20px">Năm:</span>&nbsp;<select style="width: 70%">
+              <option>2020</option>
+              <option>2019</option>
+              <option>2018</option>
+              </select></label></h3>
+            </div>
+            <div class="custom-bar-chart">
+              <ul class="y-axis">
+                <li><span>2000</span></li>
+                <li><span>1600</span></li>
+                <li><span>1200</span></li>
+                <li><span>800</span></li>
+                <li><span>400</span></li>
+                <li><span>0</span></li>
+              </ul>
+              <div class="bar">
+                <div class="title">Tháng 1</div>
+                <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">Tháng 2</div>
+                <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">Tháng 3</div>
+                <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">Tháng 4</div>
+                <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 5</div>
+                <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top">32%</div>
+              </div>
+              <div class="bar ">
+                <div class="title">Tháng 6</div>
+                <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top">62%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 7</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 8</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 9</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 10</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 11</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+              <div class="bar">
+                <div class="title">Tháng 12</div>
+                <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top">75%</div>
+              </div>
+            </div>
+            <!--custom chart end-->
+          
+              </div>
+            </div>
+            <div class="border-head">
+             <h3>Hàng Hóa Bán Chạy Gần Đây</h3>
+             </div>
+          <table class="table" style="color:black">
+    <thead>
+      <tr>
+        <th>Mã</th>
+        <th>Tên Hàng</th>
+        <th>Khu Vực</th>
+        <th>Số Lượng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="active">
+        <td>John</td>
+        <td >Doe</td>
+        <td>john@example.com</td>
+        <td>1000</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+         <td>1000</td>
+      </tr>
+      <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+    </tbody>
+  </table>
+         <div class="border-head">
+             <h3>Hàng Hóa Bán Chạy Gần Đây(<span style="color:red">*Theo Khu Vực</span>)
+               <label style="margin-left: 10%;width: 30%"><span style="font-size:20px">Khu Vực:</span>&nbsp;<select style="width: 70%">
+              <option>Khe Sanh - Lao Bảo</option>
+              <option>Gio - Cầu</option>
+              <option>Chợ Quảng Trị</option>
+              </select></label>
+             </h3>
+             </div>
+          <table class="table" style="color:black">
+    <thead>
+      <tr>
+        <th>Mã</th>
+        <th>Tên Hàng</th>
+        <th>Khu Vực</th>
+        <th>Số Lượng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="active">
+        <td>John</td>
+        <td >Doe</td>
+        <td>john@example.com</td>
+        <td>1000</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+         <td>1000</td>
+      </tr>
+      <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+       <tr class="active">
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+         <td>1000</td>
+      </tr>
+    </tbody>
+  </table>
+   <th:block th:insert="~{/common-template :: calendar}"></th:block>
+      </section>
+    </section>
+ <th:block th:insert="~{/common-template :: footer-fragment}"></th:block>
+ <div th:insert="~{/common-template :: script-fragment}"></div>
+ </section>
+</body>
+</html>
