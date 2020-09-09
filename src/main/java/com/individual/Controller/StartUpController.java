@@ -3,13 +3,19 @@ package com.individual.Controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,16 +28,13 @@ import com.individual.Entity.UserRole;
 import com.individual.ServiceImpl.AppRoleServiceImpl;
 import com.individual.ServiceImpl.AppUserServiceImpl;
 import com.individual.ServiceImpl.UserRoleServiceImpl;
-import com.individual.Utils.CommonConstant;
+import com.individual.Utils.AppRole;;
 
 @Controller
 public class StartUpController {
 
 	@Autowired
 	AppUserServiceImpl appUser;
-	@Autowired
-	AppRoleServiceImpl appRole;
-
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String Login(@RequestParam(name = "error", required = false) String error, Model model) {
@@ -63,18 +66,22 @@ public class StartUpController {
 	}
 
 	@RequestMapping(value = { "/", "/admin", "/user" }, method = RequestMethod.GET)
-	public String DefaultUrl(HttpServletRequest req, Principal a) {
+	public String DefaultUrl(HttpServletRequest req) {
 		String adminUrl = "redirect:/admin/dashboard";
 		String userUrl = "redirect:/user/dashboard";
-		HttpSession ss = req.getSession(false);
-		if (ss == null) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth == null) {
 			return "redirect:/login";
 		}
-		AppUser user = appUser.findUserAccount(a.getName());
-		List<String> roleName = appRole.getRoleNames(user.getUserId());
-		if (roleName.contains(CommonConstant.ROLE_ADMIN)) {
+		Set<String> userRoles = new HashSet<String>();
+		auth.getAuthorities().forEach(role -> {
+			userRoles.add(role.getAuthority());
+		});
+		if (userRoles.contains(AppRole.ROLE_ADMIN)) {
 			return adminUrl;
+		} else {
+
+			return userUrl;
 		}
-		return userUrl;
 	}
 }

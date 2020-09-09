@@ -14,27 +14,20 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "user_role", //
-		uniqueConstraints = { //
-				@UniqueConstraint(name = "user_role_UK", columnNames = { "user_id", "role_id" }) })
-public class UserRole implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Table(name = "user_role")
+public class UserRole {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_Id", nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private AppUser appUser;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "role_Id", nullable = false)
+	@JoinColumn(name = "role_id", nullable = false)
 	private Role appRole;
 
 	public UserRole() {
