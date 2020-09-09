@@ -1,5 +1,11 @@
 package com.individual.Service;
 
-public class ProductService {
+import java.util.List;
 
+import com.individual.Entity.Product;
+
+public interface ProductService {
+
+	public List<Product> getAllProduct();
+	
 }

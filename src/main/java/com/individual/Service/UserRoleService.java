@@ -2,6 +2,10 @@ package com.individual.Service;
 
 import java.util.List;
 
+import com.individual.Entity.UserRole;
+
 public interface UserRoleService {
-	public List<String> getUserRoles(Long id);
+
+	UserRole SaveUserRole(UserRole userRole);
+	List<UserRole> getUserRoles(Iterable<Long> userId);
 }

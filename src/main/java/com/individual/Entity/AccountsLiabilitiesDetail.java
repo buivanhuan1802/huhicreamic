@@ -1,21 +1,29 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "accounts_liabilities_detail")
-public class AccountsLiabilitiesDetail {
+public class AccountsLiabilitiesDetail implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "detail_id",nullable = false)
 	private int id;
 	
@@ -23,7 +31,7 @@ public class AccountsLiabilitiesDetail {
 	@JoinColumn(name = "accounts_liabilities_id",nullable = false)
 	private AccountsLiabilities accountLiabilities;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "purchase_order_id",nullable = false)
 	private PurchaseOrder purchaseOrder;
 	

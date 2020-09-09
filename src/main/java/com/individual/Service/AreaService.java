@@ -1,5 +1,10 @@
 package com.individual.Service;
 
-public class AreaService {
+import java.util.List;
 
+import com.individual.Entity.Area;
+
+public interface AreaService {
+
+	 List<Area> getListArea();
 }

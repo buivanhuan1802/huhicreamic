@@ -1,17 +1,27 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "area")
-public class Area {
+public class Area implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "area_id")
 	private int id;
 	
@@ -20,6 +30,18 @@ public class Area {
 	
 	@Column(name = "disable")
 	private boolean disable;
+
+	@OneToOne(mappedBy = "area",fetch = FetchType.EAGER)
+	private BestSeller bestSeller;
+	
+	
+	public BestSeller getBestSeller() {
+		return bestSeller;
+	}
+
+	public void setBestSeller(BestSeller bestSeller) {
+		this.bestSeller = bestSeller;
+	}
 
 	public int getId() {
 		return id;

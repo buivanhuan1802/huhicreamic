@@ -1,23 +1,31 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "purchase_order")
-public class PurchaseOrder {
+public class PurchaseOrder implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "purchase_order_id",nullable = false)
 	private Long id;
 	
@@ -33,6 +41,27 @@ public class PurchaseOrder {
 
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "purchaseOrder")
 	private List<PurchaseOrderDetail> listPurchaseDetail;
+	
+	@OneToOne(mappedBy = "purchaseOrder",fetch = FetchType.LAZY)
+	private AccountsLiabilitiesDetail accountsLiabilitiesDetail;
+	
+	
+	public List<PurchaseOrderDetail> getListPurchaseDetail() {
+		return listPurchaseDetail;
+	}
+
+	public void setListPurchaseDetail(List<PurchaseOrderDetail> listPurchaseDetail) {
+		this.listPurchaseDetail = listPurchaseDetail;
+	}
+
+	public AccountsLiabilitiesDetail getAccountsLiabilitiesDetail() {
+		return accountsLiabilitiesDetail;
+	}
+
+	public void setAccountsLiabilitiesDetail(AccountsLiabilitiesDetail accountsLiabilitiesDetail) {
+		this.accountsLiabilitiesDetail = accountsLiabilitiesDetail;
+	}
+
 	public Long getId() {
 		return id;
 	}

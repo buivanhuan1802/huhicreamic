@@ -1,20 +1,29 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "purchase_order_detail")
-public class PurchaseOrderDetail {
+public class PurchaseOrderDetail implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "detail_id" , nullable = false)
 	private Long id;
 	
@@ -22,7 +31,7 @@ public class PurchaseOrderDetail {
 	@JoinColumn(name = "purchase_order_id",nullable = false)
 	private PurchaseOrder purchaseOrder;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_detail_id",nullable = false)
 	private ProductDetail productDetail;
 	

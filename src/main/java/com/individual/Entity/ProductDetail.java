@@ -1,20 +1,29 @@
 package com.individual.Entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "product_detail")
-public class ProductDetail {
+public class ProductDetail implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "detail_product_id",nullable = false)
 	private Long id;
 	
@@ -34,17 +43,36 @@ public class ProductDetail {
 	@Column(name = "read_price")
 	private double realPrice;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "purchase_order_id",nullable = false)
-	private PurchaseOrder purchaseOrder;
+	@OneToOne(fetch = FetchType.LAZY,mappedBy = "")
+	@JoinColumn(name = "productDetail",nullable = false)
+	private PurchaseOrderDetail purchaseOrderDetail;
+	
+	@OneToOne(mappedBy = "productDetail",fetch = FetchType.LAZY)
+	private InvoiceDetail invoiceDetail;
 	
 	
-	public PurchaseOrder getPurchaseOrder() {
-		return purchaseOrder;
+	public PurchaseOrderDetail getPurchaseOrderDetail() {
+		return purchaseOrderDetail;
 	}
 
-	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
-		this.purchaseOrder = purchaseOrder;
+	public void setPurchaseOrderDetail(PurchaseOrderDetail purchaseOrderDetail) {
+		this.purchaseOrderDetail = purchaseOrderDetail;
+	}
+
+	public InvoiceDetail getInvoiceDetail() {
+		return invoiceDetail;
+	}
+
+	public void setInvoiceDetail(InvoiceDetail invoiceDetail) {
+		this.invoiceDetail = invoiceDetail;
+	}
+
+	public PurchaseOrderDetail getPurchaseOrder() {
+		return purchaseOrderDetail;
+	}
+
+	public void setPurchaseOrder(PurchaseOrderDetail purchaseOrderDetail) {
+		this.purchaseOrderDetail = purchaseOrderDetail;
 	}
 
 	public Long getId() {
