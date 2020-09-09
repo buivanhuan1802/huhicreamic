@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/CeramicProject-0.0.1-SNAPSHOT.jar
+web: java -agentlib:jdwp=transport=dt_socket,server=y,address=9090,suspend=n -jar target/CeramicProject-0.0.1-SNAPSHOT.jar
